@@ -12,15 +12,18 @@ CAT_LINKS = r'<a[^>]*href=\"(/wiki/Kategoria:[^"]+)\"[^>]*title=\"([^"]+)\"[^>]*
 
 def pipe_join_print(iterable):
     joined = ' | '.join(iterable)
-    print(joined)
+    if joined.strip() != '':
+        print(joined)
 
 def get_article_body_text(html: str) -> str:
     return html[html.find('<div id="mw-content-text"'):html.find('<div id="catlinks"')]
 
 
 def get_article_reflinks_text(html: str) -> str:
-    return html[html.find('<ol class="references">'):]
+    html = html[html.find('id="Przypisy"'):]
+    html = html[:html.find('<div class="mw-heading')]
 
+    return html
 
 def get_article_category_text(html: str) -> str:
     return html[html.find('<div id="catlinks"'):]
