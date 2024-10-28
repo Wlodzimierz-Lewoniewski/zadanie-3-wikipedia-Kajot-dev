@@ -83,7 +83,7 @@ def get_article_categories(article: str, limit: int = 3) -> list:
 
 
 def main():
-    cat = "Python"
+    cat = input().strip()
     articles = get_category_articles(cat)
     for article_link, article_title in articles:
         article = get_article(article_link)
