@@ -12,8 +12,7 @@ CAT_LINKS = r'<a[^>]*href=\"(/wiki/Kategoria:[^"]+)\"[^>]*title=\"([^"]+)\"[^>]*
 
 def pipe_join_print(iterable):
     joined = ' | '.join(iterable)
-    if joined.strip() != '':
-        print(joined)
+    print(joined)
 
 def get_article_body_text(html: str) -> str:
     return html[html.find('<div id="mw-content-text"'):html.find('<div id="catlinks"')]
@@ -84,7 +83,7 @@ def get_article_categories(article: str, limit: int = 3) -> list:
 
 
 def main():
-    cat = input().strip()
+    cat = "Python"
     articles = get_category_articles(cat)
     for article_link, article_title in articles:
         article = get_article(article_link)
